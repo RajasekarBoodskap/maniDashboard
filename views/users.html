@@ -1,0 +1,252 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+
+            <h5>Total Users: <span class="totalRecords" style="font-weight: bold">0</span>
+
+                <div class="btn-group" style="float: right">
+                    <a class="btn btn-outline-secondary btn-sm" onclick="openModal()"><i class="fa fa-plus"></i> <span class="hidden-xs">Add User</span></a>
+                    <a class="btn btn-outline-secondary btn-sm" data-click="panel-reload" onclick="loadUsersList()"><i class="fa fa-undo"></i> Refresh</a>
+                </div>
+            </h5>
+
+            <hr>
+
+            <table class="table table-bordered nowrap table-hover" id="userTable"  cellspacing="0" width="100%">
+
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/js/users.js"></script>
+
+
+
+
+
+
+<div id="addUser" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><span class="templateAction"></span> User</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="javascript:void(0)" autocomplete="off">
+                <div class="modal-body">
+                    <div  class="row">
+                        <div  class="col-md-6">
+                            <div  class="form-group">
+                                <label  class="inputLabel">First Name <span class="text-danger">*</span></label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="firstName" required>
+                            </div>
+                        </div>
+                        <div  class="col-md-6">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Last Name <span class="text-danger">*</span></label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="lastName" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div  class="col-md-6">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Email <span class="text-danger">*</span></label>
+                                <input  class="form-control input-sm" placeholder="" type="email" id="emailId" required>
+                            </div>
+                        </div>
+                        <div  class="col-md-6">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Mobile</label>
+                                <input  class="form-control input-sm" placeholder="+19876543210" type="text" id="mobileNo">
+                                <small class="grey">include country code with + symbol</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div  class="col-md-6">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Password</label>
+                                <input  class="form-control input-sm" placeholder="" type="password" id="password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Address</label>
+
+                                <textarea  class="form-control input-sm" placeholder="" type="text" id="address"></textarea>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="city" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>State</label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="state" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Country</label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="country" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Zipcode</label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="zipcode" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btnModal btnSubmit btn-info">Proceed</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete User</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to delete <span class="fullName" style="font-weight: 400;text-decoration: underline"></span> user?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-Modal btn-hr" onclick="proceedDelete()">Proceed</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ -->
+
+ -->
+
+
+
+
+
+
+
+
+
+ <!-- ************************* -->
+
+
+
+ <div id="addDashboard" class="modal fade" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: rgb(62, 59, 59);">
+                    <h4 class="modal-title"><span class="dashboardAction">Create</span> Dashboard</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <form action="javascript:void(0)" onsubmit="addDashboard()">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="inputLabel">Dashboard Name</label>
+                                    <input class="form-control input-sm" placeholder="" type="text" id="dashboard_name" required="">
+                                    <small>Can embed <b>HTML</b> code also</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="inputLabel">Dashboard Icon</label>
+    
+                                    <div class="dropdown">
+                                        <div class="btn btn-sm dropdown-toggle" style="width: 100%;border: 1px solid #3e373738;" type="" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <input type="text" style="" class="input-sm inputDevice" placeholder="Search by name, tags" id="imageID" onkeyup="loadImageList(this.value)">
+                                        </div>
+                                        <ul class="dropdown-menu imageListUl" aria-labelledby="dropdownMenu2"><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/7bf956ec-2f40-4c4a-ab4f-305f59b120f9')"><img src="https://api.boodskap.io/files/public/download/7bf956ec-2f40-4c4a-ab4f-305f59b120f9"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/ddfbed81-fa14-4515-ab63-d4cd0d1d26fa')"><img src="https://api.boodskap.io/files/public/download/ddfbed81-fa14-4515-ab63-d4cd0d1d26fa"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/00ba69e4-7a66-4815-9e02-beecbb948924')"><img src="https://api.boodskap.io/files/public/download/00ba69e4-7a66-4815-9e02-beecbb948924"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/be92720b-f753-44c2-9383-30574778ea8e')"><img src="https://api.boodskap.io/files/public/download/be92720b-f753-44c2-9383-30574778ea8e"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/c7fb8366-eb4a-4d2d-b1c0-992e42f1eb46')"><img src="https://api.boodskap.io/files/public/download/c7fb8366-eb4a-4d2d-b1c0-992e42f1eb46"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/7b177aec-7867-4551-a265-42f53cad691e')"><img src="https://api.boodskap.io/files/public/download/7b177aec-7867-4551-a265-42f53cad691e"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/be8db583-d757-44ef-bd33-c30735d26eff')"><img src="https://api.boodskap.io/files/public/download/be8db583-d757-44ef-bd33-c30735d26eff"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/bd130430-e8e2-4388-8e34-5c2b7cb9c708')"><img src="https://api.boodskap.io/files/public/download/bd130430-e8e2-4388-8e34-5c2b7cb9c708"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/da5ef41d-6275-4c29-a45a-9b4389aac192')"><img src="https://api.boodskap.io/files/public/download/da5ef41d-6275-4c29-a45a-9b4389aac192"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/ba29352d-ac33-4839-8010-f3d2f6b596af')"><img src="https://api.boodskap.io/files/public/download/ba29352d-ac33-4839-8010-f3d2f6b596af"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/11e75e3a-7228-459c-a8e8-3fd3477ecc9b')"><img src="https://api.boodskap.io/files/public/download/11e75e3a-7228-459c-a8e8-3fd3477ecc9b"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/e9900c61-939b-4325-97f9-d33ff0e5028e')"><img src="https://api.boodskap.io/files/public/download/e9900c61-939b-4325-97f9-d33ff0e5028e"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/35f85e6d-d2f7-4e2f-b9b0-29ad59d39e12')"><img src="https://api.boodskap.io/files/public/download/35f85e6d-d2f7-4e2f-b9b0-29ad59d39e12"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/340dadf0-2b32-47d4-bd85-979e590a112c')"><img src="https://api.boodskap.io/files/public/download/340dadf0-2b32-47d4-bd85-979e590a112c"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/48bacb2d-75ca-4107-9fb7-e149f6095e93')"><img src="https://api.boodskap.io/files/public/download/48bacb2d-75ca-4107-9fb7-e149f6095e93"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/b623269e-f1bc-4ba0-b6a0-f314d5ceff12')"><img src="https://api.boodskap.io/files/public/download/b623269e-f1bc-4ba0-b6a0-f314d5ceff12"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/b728f716-2169-41e1-b5fb-98c1457c1338')"><img src="https://api.boodskap.io/files/public/download/b728f716-2169-41e1-b5fb-98c1457c1338"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/1573df00-aff8-4104-9b35-8db509bcd9d8')"><img src="https://api.boodskap.io/files/public/download/1573df00-aff8-4104-9b35-8db509bcd9d8"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/7f57d2b7-a6fb-45c8-92e8-06f2532884b8')"><img src="https://api.boodskap.io/files/public/download/7f57d2b7-a6fb-45c8-92e8-06f2532884b8"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/4291a87d-e59e-49ba-a633-1c705b5330f9')"><img src="https://api.boodskap.io/files/public/download/4291a87d-e59e-49ba-a633-1c705b5330f9"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/fde34dfa-1d7a-46c0-b1d2-b6fe49ce8c4f')"><img src="https://api.boodskap.io/files/public/download/fde34dfa-1d7a-46c0-b1d2-b6fe49ce8c4f"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/5f66a4eb-61e9-4019-926e-5cec29a74c33')"><img src="https://api.boodskap.io/files/public/download/5f66a4eb-61e9-4019-926e-5cec29a74c33"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/68c2957c-5c1b-4c3a-b867-c5864ea3339e')"><img src="https://api.boodskap.io/files/public/download/68c2957c-5c1b-4c3a-b867-c5864ea3339e"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a7ef72ad-e689-45a6-beff-b2908dcdff13')"><img src="https://api.boodskap.io/files/public/download/a7ef72ad-e689-45a6-beff-b2908dcdff13"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/ff87c24e-ec9e-4a8b-a53d-4c229e2277f5')"><img src="https://api.boodskap.io/files/public/download/ff87c24e-ec9e-4a8b-a53d-4c229e2277f5"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/fea488bc-3a36-4d75-8bfc-e6e1a68b8121')"><img src="https://api.boodskap.io/files/public/download/fea488bc-3a36-4d75-8bfc-e6e1a68b8121"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/b1137a1d-6dbd-4143-a481-fe483f7edf86')"><img src="https://api.boodskap.io/files/public/download/b1137a1d-6dbd-4143-a481-fe483f7edf86"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/47d632e9-b7ca-479d-81c2-b46d31572c89')"><img src="https://api.boodskap.io/files/public/download/47d632e9-b7ca-479d-81c2-b46d31572c89"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/83ce6118-002e-4443-a895-df6423b51197')"><img src="https://api.boodskap.io/files/public/download/83ce6118-002e-4443-a895-df6423b51197"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/6a48c212-8276-4997-8de3-e50a0f6398bd')"><img src="https://api.boodskap.io/files/public/download/6a48c212-8276-4997-8de3-e50a0f6398bd"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/f2736515-bab2-4e03-a285-bc664655aaf1')"><img src="https://api.boodskap.io/files/public/download/f2736515-bab2-4e03-a285-bc664655aaf1"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/563028aa-2771-4ee1-a99c-dbc8d9e66659')"><img src="https://api.boodskap.io/files/public/download/563028aa-2771-4ee1-a99c-dbc8d9e66659"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/414339c6-84bd-44e2-b892-b845c1bb829d')"><img src="https://api.boodskap.io/files/public/download/414339c6-84bd-44e2-b892-b845c1bb829d"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/596d4834-78ba-49a8-8946-5727cb6f7866')"><img src="https://api.boodskap.io/files/public/download/596d4834-78ba-49a8-8946-5727cb6f7866"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a995a1de-accb-44f3-b7a0-b0018d0d9cbc')"><img src="https://api.boodskap.io/files/public/download/a995a1de-accb-44f3-b7a0-b0018d0d9cbc"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/030a1e68-fa03-42b6-b7a3-3393c77c2ae6')"><img src="https://api.boodskap.io/files/public/download/030a1e68-fa03-42b6-b7a3-3393c77c2ae6"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/442f2554-6666-4fe4-9306-5069fd1bf3ea')"><img src="https://api.boodskap.io/files/public/download/442f2554-6666-4fe4-9306-5069fd1bf3ea"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/b0215015-6ba9-4164-aca5-e9ad5807d696')"><img src="https://api.boodskap.io/files/public/download/b0215015-6ba9-4164-aca5-e9ad5807d696"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/e7e208f5-fa78-4008-acc4-0278f48dfd83')"><img src="https://api.boodskap.io/files/public/download/e7e208f5-fa78-4008-acc4-0278f48dfd83"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/4ef13b8f-9969-4709-90d3-1530ac3d6c05')"><img src="https://api.boodskap.io/files/public/download/4ef13b8f-9969-4709-90d3-1530ac3d6c05"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a66b4ab7-6bd7-4645-9a9f-e3947bce4610')"><img src="https://api.boodskap.io/files/public/download/a66b4ab7-6bd7-4645-9a9f-e3947bce4610"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/dce7bc55-c7c7-41dd-9ffd-f6d4ac418369')"><img src="https://api.boodskap.io/files/public/download/dce7bc55-c7c7-41dd-9ffd-f6d4ac418369"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/117d16a1-93c3-43d1-8e5b-05781130b68b')"><img src="https://api.boodskap.io/files/public/download/117d16a1-93c3-43d1-8e5b-05781130b68b"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/0ae66a11-0c47-4638-868e-91ddac83ba9d')"><img src="https://api.boodskap.io/files/public/download/0ae66a11-0c47-4638-868e-91ddac83ba9d"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/688420fe-d4e5-447f-885b-fea738a840d4')"><img src="https://api.boodskap.io/files/public/download/688420fe-d4e5-447f-885b-fea738a840d4"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/40e90d4c-21bc-4737-94b7-5797d5e20534')"><img src="https://api.boodskap.io/files/public/download/40e90d4c-21bc-4737-94b7-5797d5e20534"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/7ea0387e-47bf-44af-9337-8d99da7753a1')"><img src="https://api.boodskap.io/files/public/download/7ea0387e-47bf-44af-9337-8d99da7753a1"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/c18be8dd-1fa6-46ae-b181-e3717b393e74')"><img src="https://api.boodskap.io/files/public/download/c18be8dd-1fa6-46ae-b181-e3717b393e74"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/cd0a1f56-8847-4c0c-b80c-59e6840f73bd')"><img src="https://api.boodskap.io/files/public/download/cd0a1f56-8847-4c0c-b80c-59e6840f73bd"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/754cd028-b391-4775-ad15-feb797905529')"><img src="https://api.boodskap.io/files/public/download/754cd028-b391-4775-ad15-feb797905529"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/b7209014-63bc-4269-9b40-e05be5d62004')"><img src="https://api.boodskap.io/files/public/download/b7209014-63bc-4269-9b40-e05be5d62004"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/847b06c3-2ca0-496b-ae23-e446a373731b')"><img src="https://api.boodskap.io/files/public/download/847b06c3-2ca0-496b-ae23-e446a373731b"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/17855c55-c008-4f10-b6c9-738888626351')"><img src="https://api.boodskap.io/files/public/download/17855c55-c008-4f10-b6c9-738888626351"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/8192c23a-f676-4eb2-aaec-d3fb9244cfb4')"><img src="https://api.boodskap.io/files/public/download/8192c23a-f676-4eb2-aaec-d3fb9244cfb4"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/155ca6c9-cb16-4e71-9bd1-545beaace8a5')"><img src="https://api.boodskap.io/files/public/download/155ca6c9-cb16-4e71-9bd1-545beaace8a5"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/bfeba6b4-c2bb-455f-808e-0048037d6349')"><img src="https://api.boodskap.io/files/public/download/bfeba6b4-c2bb-455f-808e-0048037d6349"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/2be2113c-7611-4e9f-9440-463c78ecd85b')"><img src="https://api.boodskap.io/files/public/download/2be2113c-7611-4e9f-9440-463c78ecd85b"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a94c1b24-903b-49ba-977e-162628067db6')"><img src="https://api.boodskap.io/files/public/download/a94c1b24-903b-49ba-977e-162628067db6"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/2e74f969-147c-46a5-95ad-c5dfe9f5314c')"><img src="https://api.boodskap.io/files/public/download/2e74f969-147c-46a5-95ad-c5dfe9f5314c"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/aba3211f-f1c8-4ac9-b08a-3aa553b07de8')"><img src="https://api.boodskap.io/files/public/download/aba3211f-f1c8-4ac9-b08a-3aa553b07de8"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/95ee7b2f-4607-416e-acef-67bc8aafe67b')"><img src="https://api.boodskap.io/files/public/download/95ee7b2f-4607-416e-acef-67bc8aafe67b"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/d4b09926-cf8c-4b71-98e9-48e9bacb0e79')"><img src="https://api.boodskap.io/files/public/download/d4b09926-cf8c-4b71-98e9-48e9bacb0e79"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a5f4e4d7-a884-4744-a2cf-19ad1da2c8a6')"><img src="https://api.boodskap.io/files/public/download/a5f4e4d7-a884-4744-a2cf-19ad1da2c8a6"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/50688b46-04b5-4ffe-b470-215724c149e0')"><img src="https://api.boodskap.io/files/public/download/50688b46-04b5-4ffe-b470-215724c149e0"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a720359e-085b-483d-95fc-0865522283e1')"><img src="https://api.boodskap.io/files/public/download/a720359e-085b-483d-95fc-0865522283e1"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/4f18b21f-25ff-4ca8-885a-89ce4f3ad8c6')"><img src="https://api.boodskap.io/files/public/download/4f18b21f-25ff-4ca8-885a-89ce4f3ad8c6"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/5af982a9-31cf-4dbf-85e6-103ab82a8bfb')"><img src="https://api.boodskap.io/files/public/download/5af982a9-31cf-4dbf-85e6-103ab82a8bfb"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/79a62a07-b470-46ae-b603-cc2eae365e81')"><img src="https://api.boodskap.io/files/public/download/79a62a07-b470-46ae-b603-cc2eae365e81"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/2406a2f5-e59d-4dd5-8953-f4bacb7adafa')"><img src="https://api.boodskap.io/files/public/download/2406a2f5-e59d-4dd5-8953-f4bacb7adafa"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/5e3c8919-c06c-4105-8468-19f3190a3797')"><img src="https://api.boodskap.io/files/public/download/5e3c8919-c06c-4105-8468-19f3190a3797"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/3de488db-eac7-4360-afba-0a2c03b8b7db')"><img src="https://api.boodskap.io/files/public/download/3de488db-eac7-4360-afba-0a2c03b8b7db"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/af1b56af-5686-465f-8268-5b474729703f')"><img src="https://api.boodskap.io/files/public/download/af1b56af-5686-465f-8268-5b474729703f"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a8b19c16-51ea-40ea-9d9d-ca37276c3506')"><img src="https://api.boodskap.io/files/public/download/a8b19c16-51ea-40ea-9d9d-ca37276c3506"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/d2bad208-27af-4697-a7ca-02efd6f8580d')"><img src="https://api.boodskap.io/files/public/download/d2bad208-27af-4697-a7ca-02efd6f8580d"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li><li class="imageListLi" onclick="setImageId('https://api.boodskap.io/files/public/download/a465d4e5-f032-47ca-9117-9f57a44bdd80')"><img src="https://api.boodskap.io/files/public/download/a465d4e5-f032-47ca-9117-9f57a44bdd80"><small><span class="label label-success"><i class="icon-unlock"></i> Public</span></small></li></ul>
+                                    </div>
+                                    <small>* List only public images</small>
+    
+    
+                                    <!--<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-defaul btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="iconClass" id="dashboard_icon"></span>
+                                        </button>
+                                        <div class="dropdown-menu open-left arrow iconList" style="height:200px;overflow: scroll;overflow-x: hidden;width:50px;">
+                                            &lt;!&ndash;<a class="custom-dropdown-item" style="" (click)="dashboard.setIconClass(icon)"><i class="{{icon}}"></i></a>&ndash;&gt;
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group imageHtml" style="text-align: center;"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="inputLabel">Background Color</label> <br>
+                                    <!--<input id="dashboard_bg" required></input>-->
+                                    <div id="dashboard_bg" class="input-group colorpicker-component colorpicker-element">
+                                        <input type="text" value="" class="form-control">
+                                        <span class="input-group-addon"><i style="background-color: rgb(255, 255, 255);"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="inputLabel">Title Background Color</label> <br>
+                                    <!--<input id="dashboard_bg" required></input>-->
+                                    <div id="dashboard_title_bg" class="input-group colorpicker-component colorpicker-element">
+                                        <input type="text" value="" class="form-control">
+                                        <span class="input-group-addon"><i style="background-color: rgb(109, 109, 109);"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="inputLabel">Title Text Color</label> <br>
+                                    <!--<input id="dashboard_bg" required></input>-->
+                                    <div id="dashboard_title_text_bg" class="input-group colorpicker-component colorpicker-element">
+                                        <input type="text" value="" class="form-control">
+                                        <span class="input-group-addon"><i style="background-color: rgb(255, 255, 255);"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btnModal btnSubmit">Proceed</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+
+
+
+

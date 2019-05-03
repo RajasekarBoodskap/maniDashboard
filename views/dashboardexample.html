@@ -1,0 +1,1625 @@
+
+<!DOCTYPE html>
+<html lang="en" class="ie8">
+<head>
+    <meta charset="utf-8" />
+    <title>Boodskap - Highly Scalable IoT Platform</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="Boodskap Inc.," name="author" />
+    <meta name="robots" content="nofollow" />
+
+    <meta name="theme-color" content="#fac300" />
+
+
+    <link href="/images/favicon.ico" rel="icon">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="/css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/animate.min.css" rel="stylesheet" />
+    <link href="/css/style.min.css" rel="stylesheet" />
+    <link href="/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="/css/default.css" rel="stylesheet" id="theme" />
+    <link href="/css/fontawesome-all.min.css" rel="stylesheet"  />
+    <link href="/css/font-awesome.min.css" rel="stylesheet"  />
+    <link href="/fonts/icomoon.css" rel="stylesheet"  />
+
+
+    <link href="/css/dataTables.bootstrap.min.css" rel=stylesheet>
+    <link href="/css/fixedColumns.bootstrap.min.css" rel=stylesheet>
+    <link href="/css/responsive.bootstrap.min.css" rel=stylesheet>
+
+    <link rel="stylesheet" type="text/css" href="/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/colReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/fixedHeader.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/ns-default.css" />
+    <link rel="stylesheet" type="text/css" href="/css/ns-style-growl.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/common-style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-tour-standalone.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/libraries/daterangepicker/daterangepicker.min.css" />
+
+
+
+    <script src="/libraries/pace.min.js"></script>
+    <style>
+        body{
+            font-family: 'Open Sans' !important;
+
+        }
+    </style>
+
+
+</head>
+<body class="pace-top bg-white">
+
+<audio id="beepAudio" src="/libraries/beep.wav" autostart="false" ></audio>
+
+<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+
+<div id="page-container" class="fade">
+
+    <script src="/js/classie.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
+    <script src="/js/notificationFx.js"></script>
+
+    <script src="/libraries/jquery-3.2.1.min.js"></script>
+    <script src="/libraries/jquery-ui.min.js"></script>
+    <script src="/libraries/bootstrap.bundle.min.js"></script>
+    <script src="/libraries/html5shiv.js"></script>
+    <script src="/libraries/respond.min.js"></script>
+    <script src="/libraries/excanvas.min.js"></script>
+    <script src="/libraries/jquery.slimscroll.min.js"></script>
+    <script src="/libraries/js.cookie.js"></script>
+    <script src="/libraries/default.min.js"></script>
+    <script src="/libraries/apps.min.js"></script>
+    <script src="/js/sweetalert2.js"></script>
+    <script src="/js/sweetalert2.all.js"></script>
+
+    <script src="/libraries/jquery.slidereveal.min.js"></script>
+    <script src="/libraries/bootstrap-tour-standalone.min.js"></script>
+
+
+    <script src="/js/async.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="/js/underscore-min.js"></script>
+    <script src="/js/boodskap.ws.js"></script>
+
+    <script src="/libraries/clipboard.min.js"></script>
+
+    <script type="text/javascript" src="/libraries/daterangepicker/jquery.daterangepicker.min.js"></script>
+
+
+
+    <script src="/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/dataTables.fixedColumns.min.js" type="text/javascript"></script>
+    <script src="/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <script src="/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+
+
+    <script src="/js/dataTables.colReorder.min.js" type="text/javascript"></script>
+    <script src="/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.highlight.js" type="text/javascript"></script>
+
+
+    <script src="/platform-config.js"></script>
+    <script src="/controllers/const-varibales.js"></script>
+    <script src="/controllers/utils.js"></script>
+    <script src="/controllers/api-calls.js"></script>
+    <script src="/controllers/layoutmenu.js"></script>
+    <script src="/controllers/mqtt-adapter.js"></script>
+    <script src="/controllers/mqtt-adapter-global.js"></script>
+
+
+
+    <style>
+.priceLabel{
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    /* padding-right: 26px; */
+    line-height: 46px;
+    color: #242a30;
+    background-color: #f2f3f5;
+}
+</style>
+
+<div id="header" class="header navbar-inverse">
+    <!-- begin navbar-header -->
+    <div class="navbar-header">
+
+        <span class="barmenu" onclick="openNav()"><i class="icon-bars"></i></span>
+
+        <a href="javascript:void(0)" class="navbar-brand" style="margin-left: 25px;padding: 5px 25px;">
+            <img src="" class="domain_logo" style="height:40px"  onclick="openNav()" > </a>
+
+        <button type="button"  class="navbar-toggle btn btn-circle btn-danger btn-sm btnMobile" onclick="logout()">
+            <i class="icon-sign-out"></i>
+        </button>
+
+        <a  class="navbar-toggle btn btn-circle btn-warning btn-sm btnMobile" style="right:20px;" href="/profile">
+            <i class="icon-user"></i>
+        </a>
+    </div>
+    <!-- end navbar-header -->
+
+    <ul class="navbar-nav navbar-right hidden-xs hidden">
+        <!--<li>
+            <form class="navbar-form" action="/search">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="query" placeholder="Search">
+                    <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </li>-->
+       <!-- <li class="menulink">
+            <a href="/home">Platform Home</a>
+        </li>-->
+        <li class="googletranslate hidden-sm">
+
+
+            <div id="google_translate_element"  style="margin-top: 10px;"></div><script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'da,de,en,es,fr,ga,hi,id,it,ja,ms,nl,pt,ro,ru,sv,ta,ur,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true}, 'google_translate_element');
+            }
+        </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+        </li>
+        <li class="verticalsolutions">
+
+
+
+        </li>
+        <li class="dropdown menulink">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                Boodskap Platform <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="min-width: 22rem">
+
+                <div class="row">
+                    <div class="col-lg-6" style="border-right: 1px solid #eee;">
+                        <a href="/home" class="dropdown-item"><i class="icon-home"></i> Home</a>
+                        <div class="dropdown-divider"></div>
+                        <label style="margin-left: 10px;">Platform</label>
+                        <a href="/dashboard" class="dropdown-item">Dashboard</a>
+                        <a href="/userevents" class="dropdown-item">Event Subscriptions</a>
+
+                        <div class="dropdown-divider"></div>
+                        <label style="margin-left: 10px;">Marketplace</label>
+                        <a href="/marketplace/widgets" class="dropdown-item">Widgets</a>
+                        <a href="/marketplace/verticals" class="dropdown-item">Verticals</a>
+
+
+                        <div class="dropdown-divider"></div>
+                        <label style="margin-left: 10px;">Utilities</label>
+                        <a href="/files" class="dropdown-item">File Storage</a>
+                        <a href="/query-console" class="dropdown-item">Elastic Search Query</a>
+                        <a href="/db-query-console" class="dropdown-item db">DB Search Query</a>
+                        <a href="/sql-query-console" class="dropdown-item sqlquery">Ignite SQL Query</a>
+                        <a href="/messages"  class="dropdown-item">Messages</a>
+                        <a href="/event-logs" class="dropdown-item">Event Logs</a>
+                        <a href="/log-console" target="_blank" class="dropdown-item">Application Logs</a>
+
+                        <div class="dropdown-divider"></div>
+                        <label style="margin-left: 10px;">Plugins</label>
+                        <a href="/alexa" class="dropdown-item"><i class="icon-microphone"></i> Amazon Alexa </a>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <label style="margin-left: 10px;">Developer Modules</label>
+                        <a href="/dashboard-editor" class="dropdown-item">Dashboard Editor Studio</a>
+                        <a href="/mobile-platform" class="dropdown-item">Mobile Editor Studio</a>
+                        <a href="/message-definition" class="dropdown-item">Message Definition</a>
+                        <a href="/record-definition" class="dropdown-item">Record Definition</a>
+                        <a href="/sql-table" class="dropdown-item sqlquery">SQL Table</a>
+                        <a href="/db-table" class="dropdown-item dbquery">DB Table</a>
+                        <a href="/rules-engine" class="dropdown-item">Rules Engine</a>
+                        <a href="/script-console" class="dropdown-item">Script Console</a>
+                        <a href="/machine-learning" class="dropdown-item">Machine Learning</a>
+                        <a href="/templates" class="dropdown-item">Plaform Templates</a>
+                        <a href="/sql-templates" class="dropdown-item sqlquery">SQL Templates</a>
+                        <a href="/db-templates" class="dropdown-item dbquery">DB Templates</a>
+                        <a href="/events" class="dropdown-item">Events & Notification</a>
+                        <a href="/code-editor" class="dropdown-item">Code Editor</a>
+                        <div class="dropdown-divider"></div>
+                        <label style="margin-left: 10px;">Administration</label>
+                        <a href="/user-management" class="dropdown-item">User Management</a>
+                        <a href="/device-management" class="dropdown-item">Device Management</a>
+                        <a href="/asset-management" class="dropdown-item">Asset Management</a>
+                        <a href="/firmware-management" class="dropdown-item">Firmware Management</a>
+                        <a href="/geofence" class="dropdown-item">Geofence Management</a>
+
+                        <a href="/plugin-management" class="dropdown-item">Plugin Management</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </li>
+
+
+        <!--<li class="dropdown">
+            <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                <i class="icon-shopping-bag"></i>
+                <span class="label" style="background: #009688">1</span>
+            </a>
+            &lt;!&ndash;<ul class="dropdown-menu media-list dropdown-menu-right" style="width: 350px;">
+                <li class="dropdown-header">Shopping Bag (1)</li>
+                <li class="media">
+                    <div class="cart-body">
+                        <ul class="cart-item">
+                            <li>
+                                <div class="cart-item-image"><img src="/images/menu/widget.png" alt=""></div>
+                                <div class="cart-item-info">
+                                    <h4>Visitor Management System</h4>
+                                    <p class="price">$100.00</p>
+                                </div>
+                                <div class="cart-item-close">
+                                    <a href="#" data-toggle="tooltip" data-title="Remove" data-original-title="" title="">×</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="media">
+                    <label class="priceLabel">Total: $100.00</label>
+                </li>
+                <li class="dropdown-footer text-center">
+                    <div class="cart-footer">
+                        <div class="row row-space-10">
+                            <div class="col-xs-6">
+                                <a href="/view-cart" class="btn btn-default btn-block">View Cart</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/checkout" class="btn btn-inverse btn-block">Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>&ndash;&gt;
+        </li>-->
+
+        <li class="dropdown menulink">
+            <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                <i class="fa fa-bell"></i>
+                <!--<span class="label">5</span>-->
+            </a>
+            <ul class="dropdown-menu media-list dropdown-menu-right hide">
+                <li class="dropdown-header">NOTIFICATIONS (5)</li>
+                <li class="media">
+                    <a href="javascript:;">
+                        <div class="media-left">
+                            <i class="fa fa-bug media-object bg-silver-darker"></i>
+                        </div>
+                        <div class="media-body">
+                            <h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+                            <div class="text-muted f-s-11">3 minutes ago</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="media">
+                    <a href="javascript:;">
+                        <div class="media-left">
+                            <i class="fa fa-plus media-object bg-silver-darker"></i>
+                        </div>
+                        <div class="media-body">
+                            <h6 class="media-heading"> New User Registered</h6>
+                            <div class="text-muted f-s-11">1 hour ago</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="media">
+                    <a href="javascript:;">
+                        <div class="media-left">
+                            <i class="fa fa-envelope media-object bg-silver-darker"></i>
+                            <i class="fab fa-google text-warning media-object-icon f-s-14"></i>
+                        </div>
+                        <div class="media-body">
+                            <h6 class="media-heading"> New Email From John</h6>
+                            <div class="text-muted f-s-11">2 hour ago</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="dropdown-footer text-center">
+                    <a href="javascript:;">View more</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown navbar-user">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="" alt="" class="user_profile_picture">
+                <span class="d-none d-md-inline"></span><span class="user_profile_name"></span> <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="border-top: 0px;padding-top: 0px;">
+                <div class="userRoles menulink" style="padding: 5px;text-transform: capitalize;color: #fff;">
+                </div>
+                <a href="/profile" class="dropdown-item"><i class="icon-edit2"></i> Edit Profile</a>
+                <!--<a href="/myaccount" class="dropdown-item">My Account</a>-->
+                <a href="/domain" class="dropdown-item menulink"><i class="icon-globe"></i> Domain Settings</a>
+                <a href="#" class="dropdown-item menulink"><i class="icon-question-circle"></i> Help & Support</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript:;" class="dropdown-item" onclick="logout()"><i class="icon-sign-out"></i> Log Out</a>
+            </div>
+        </li>
+
+        <li class="menulink" title="Live Data">
+            <a href="javascript:;" class="f-s-14" onclick="showLiveNotification()">
+                <i class="icon-bolt iconLiveStatus"></i>
+            </a>
+        </li>
+    </ul>
+    <!-- end header navigation right -->
+</div>
+
+
+
+<style>
+
+    .rightSideBarPanel {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 3;
+        background: #fff;
+        display: none;
+        width: 25%;
+        border: 1px dotted #ccc;
+        padding-top: 47px;
+        padding-top: 47px;
+    }
+
+    .liveLogger {
+        list-style: none;
+        padding: 0px;
+        margin-top: 5px;
+    }
+
+    .liveLogger li {
+        padding: 5px;
+        background-color: #eeeeee85;
+        margin: 5px 0px;
+    }
+
+    .loggerWrapper {
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .codeStyle{
+        font-family:"Courier New",monospace;
+        font-size:11px;
+        word-break: break-all;
+        white-space: pre-wrap;
+        text-align: left;
+        clear:both
+    }
+</style>
+<div class="rightSideBarPanel">
+
+    <p style="padding: 10px;margin-bottom: 0px;background-color: #eee;text-align: right">
+
+        <span style="float:left;display: inline-block;cursor: pointer" onclick="clearTextData()"><i class="icon-times"></i> clear</span>
+
+        <label><input type="checkbox" value="ON" id="liveUpdateGlobal" onchange="liveUpdateGlobal(this)" /> Enable Live Update</label>
+    </p>
+
+    <span class="serverStatus" style=""></span>
+
+    <!--<label class="pull-right" style="margin-top: 5px;">-->
+        <!--<input type="checkbox" id="notificationSound" /> Enable Sound-->
+    <!--</label>-->
+
+    <div class="loggerWrapper" style="clear: both">
+        <p  style="text-align: center" class="liveMsg"><small >Live Message will be updated here!</small></p>
+        <ul class="liveLogger">
+
+            <!--<li>
+                <p>
+                    <label class="pull-left"><small>Device ID</small>: <b>12346132561</b></label>
+                    <label class="pull-right"><small>Message ID</small>: <b>234</b></label>
+                </p>
+
+                <pre style="white-space: pre-wrap">
+
+                </pre>
+            </li>-->
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $(".loggerWrapper").css('height', ($(window).height() - 110) + 'px')
+    });
+</script>
+
+
+
+
+
+
+
+    <style>
+    .sidebar .nav li a:hover{
+        text-decoration: underline;
+    }
+    .sidebar .nav>li.active>a, .sidebar .nav>li.active>a:focus, .sidebar .nav>li.active>a:hover {
+        background: transparent;
+    }
+</style>
+<div id="mySidenav" class="sidenav" style="background-color: #000000d1">
+    <div class="sidebar">
+    <ul class="nav" style="margin-bottom: 50px">
+        <li class="has-sub active sideMain homeMenu">
+            <a href="/home">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </a>
+        </li>
+
+        <li class="nav-header">Platform</li>
+        <li class="has-sub sideMain marketMenu">
+        <a href="/dashboard">
+            <i class="icon-dashboard"></i>
+            <span>Dashboard</span>
+        </a>
+        </li>
+        <li class="has-sub sideMain marketMenu">
+        <a href="/userevents">
+            <i class="icon-bell4"></i>
+            <span>Event Subscriptions</span>
+        </a>
+        </li>
+
+        <li class="nav-header">Marketplace</li>
+
+
+        <li class="has-sub sideMain marketMenu">
+            <a href="/marketplace">
+                <i class="icon-android-playstore"></i>
+                <span>Boodskap Marketplace</span>
+            </a>
+        </li>
+
+
+        <li class="nav-header">Developer Modules</li>
+
+        <li class="has-sub sideMain dashboardEditor">
+            <a href="/dashboard-editor">
+                <i class="icon-edit2"></i>
+                <span>Dashboard Editor Studio</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain mobMenu">
+            <a href="/mobile-platform">
+                <i class="icon-mobile"></i>
+                <span>Mobile Editor Studio</span>
+            </a>
+        </li>
+
+
+        <li class="has-sub sideMain msgDefMenu">
+            <a href="/message-definition">
+                <i class="icon-stack-2"></i>
+                <span>Message Definition</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain recordDefMenu">
+            <a href="/record-definition">
+                <i class="icon-th"></i>
+                <span>Record Definition</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain recordDefMenu dbquery">
+            <a href="/db-table">
+                <i class="icon-database2"></i>
+                <span>DB Table</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain recordDefMenu sqlquery">
+            <a href="/sql-table">
+                <i class="icon-database2"></i>
+                <span>SQL Table</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain scriptMenu">
+            <a href="/script-console">
+                <i class="icon-ios-monitor"></i>
+                <span>Script Console</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain rulesMenu">
+            <a href="/rules-engine">
+                <i class="icon-file-code-o"></i>
+                <span>Rules Engine</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain codeEditor">
+            <a href="/code-editor">
+                <i class="icon-code2"></i>
+                <span>Code Editor</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain eventMenu">
+            <a href="/events">
+                <i class="icon-bell3"></i>
+                <span>Events & Notification</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain eventMenu">
+            <a href="/templates">
+                <i class="icon-list-alt"></i>
+                <span>Plaform Templates</span>
+            </a>
+        </li>
+
+        <li class="has-sub sideMain sqlquery">
+            <a href="/sql-templates">
+                <i class="icon-list-alt"></i>
+                <span>SQL Templates</span>
+            </a>
+        </li>
+
+        <li class="has-sub sideMain dbquery">
+            <a href="/db-templates">
+                <i class="icon-list-alt"></i>
+                <span>DB Templates</span>
+            </a>
+        </li>
+
+
+
+        <li class="has-sub sideMain mlHeader">
+            <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="icon-android-bulb"></i>
+                <span>AI & Machine Learning</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="sideSub dataLearnMenu"><a href="/machine-learning">Data Learning</a></li>
+                <li class="sideSub faceRegMenu"><a href="/face-recognition">Face Recognition</a></li>
+               <!-- <li class="sideSub opencvMenu"><a href="/opencv-recognition">OpenCV Object Recognition</a></li>
+                <li class="sideSub tensorflowMenu"><a href="/tensorflow-recognition">TensorFlow Object Recognition</a></li>
+                <li class="sideSub msgImgMenu"><a href="/message-image-recognition">Message Image Recognition</a></li>-->
+            </ul>
+        </li>
+
+
+
+        <li class="nav-header">Administration</li>
+
+        <li class="has-sub sideMain userHeader">
+            <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="icon-users"></i>
+                <span>User Management</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="sideSub userMenu"><a href="/user-management">Mange Users</a></li>
+                <!--<li class="sideSub userRoleMenu"><a href="/user-roles">Manage User Roles</a></li>-->
+            </ul>
+        </li>
+
+        <li class="has-sub sideMain deviceHeader" >
+            <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="icon-hdd-o"></i>
+                <span>Device Management</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="sideSub deviceMenu"><a href="/device-management">Mange Devices</a></li>
+                <li class="sideSub deviceModelMenu"><a href="/device-models">Manage Device Models</a></li>
+                <li class="sideSub deviceSimMenu"><a href="/sim-provisioning">Sim Provisioning</a></li>
+
+                <!-- Delete Later -->
+               <!-- <li class="sideSub deviceSimMenu"><a href="/module-profile">Module Profile</a></li>
+                <li class="sideSub deviceSimMenu"><a href="/module-attributes">Module Attributes</a></li>
+                <li class="sideSub deviceSimMenu"><a href="/device-profile">Device Profile</a></li>
+                <li class="sideSub deviceSimMenu"><a href="/sensor-profile-attributes">Sensor Profile & Attributes</a></li>
+                <li class="sideSub deviceSimMenu"><a href="/message-services-profile">Message Services Profile</a></li>
+                <li class="sideSub deviceSimMenu"><a href="/carrier-profile">Carrier Profile</a></li>-->
+
+
+            </ul>
+        </li>
+        <li class="has-sub sideMain assetHeader">
+            <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="icon-suitcase"></i>
+                <span>Asset Management</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="sideSub assetMenu"><a href="/asset-management">Mange Assets</a></li>
+            </ul>
+        </li>
+        <li class="has-sub sideMain firmwareHeader">
+            <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="icon-file-o"></i>
+                <span>Firmware Management</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="sideSub firmwareMenu"><a href="/firmware-management">Mange Firmware</a></li>
+               <!--&lt;!&ndash; <li class="sideSub otadeviceMenu"><a href="/ota-device-batches">OTA Device Batches</a></li>-->
+                <li class="sideSub otalMenu"><a href="/firmware/ota-upgrade">OTA Upgrade</a></li>
+            </ul>
+        </li>
+
+        <li class="has-sub sideMain geofenceMenu">
+            <a href="/geofence">
+                <i class="icon-map-marker"></i>
+                <span>Geofence Management</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain pluginMenu">
+            <a href="/plugin-management">
+                <i class="icon-puzzle-piece"></i>
+                <span>Plugin Management</span>
+            </a>
+        </li>
+
+
+        <li class="nav-header">Plugins</li>
+
+        <li class="has-sub sideMain alexaMenu">
+            <a href="/alexa">
+                <i class="icon-microphone"></i>
+                <span>Amazon Alexa</span>
+            </a>
+        </li>
+
+
+        <li class="nav-header">Utilities</li>
+
+
+        <li class="has-sub sideMain marketMenu">
+            <a href="/files">
+                <i class="icon-file-image-o"></i>
+                <span>File Storage</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain marketMenu">
+            <a href="/query-console" >
+                <i class="icon-search5"></i>
+                <span>Elastic Search Query</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain marketMenu dbquery">
+            <a href="/db-query-console" >
+                <i class="icon-database2"></i>
+                <span>DB Query</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain marketMenu sqlquery">
+            <a href="/sql-query-console" >
+                <i class="icon-database2"></i>
+                <span>Ignite SQL Query</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain marketMenu">
+            <a href="/messages">
+                <i class="icon-th-list"></i>
+                <span>Messages</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain marketMenu">
+            <a href="/event-logs" >
+                <i class="icon-file-o"></i>
+                <span>Event Logs</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain marketMenu">
+            <a href="/log-console" target="_blank">
+                <i class="icon-file-o"></i>
+                <span>Application Logs</span>
+            </a>
+        </li>
+       <!-- <li class="has-sub sideMain marketMenu">
+            <a href="/api-doc">
+                <i class="icon-file-text-o"></i>
+                <span>API Docs</span>
+            </a>
+        </li>-->
+
+       <!-- <li class="has-sub sideMain marketMenu">
+            <a href="javascript:;">
+                <b class="caret"></b>
+                <i class="icon-android-playstore"></i>
+                <span>Boodskap Marketplace</span>
+            </a>
+            <ul class="sub-menu">
+                <li class="sideSub deviceMenu"><a href="/marketplace">Dashboard</a></li>
+                <li class="sideSub deviceMenu"><a href="/marketplace/widgets">Widgets</a></li>
+                <li class="sideSub deviceModelMenu"><a href="/marketplace/verticals">Verticals</a></li>
+            </ul>
+        </li>-->
+
+       <!-- <li class="has-sub sideMain widgetsMenu">
+            <a href="/marketplace/widgets">
+                <i class="icon-film2"></i>
+                <span>Widgets</span>
+            </a>
+        </li>
+        <li class="has-sub sideMain applicationMenu">
+            <a href="/marketplace/applications">
+                <i class="icon-cube2"></i>
+                <span>Applications</span>
+            </a>
+        </li>-->
+
+    </ul>
+    </div>
+</div>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/select2.min.css">
+<link rel="stylesheet" href="/css/bootstrap-colorpicker.min.css"/>
+
+<style>
+    .panelHeader{
+        padding: 10px 15px;
+        border: none;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        background-color: #6d6d6d;
+        color:#fff
+    }
+    .panel{
+        margin-bottom: 0px;
+    }
+    .panel-body{
+        border: 1px solid #eee;
+    }
+    .dashboardBody{
+        overflow: auto;
+        overflow-x: hidden;
+    }
+    body{
+        /*background-color: #9e9e9ea3 !important;*/
+    }
+    .widgetHeader{
+        font-size: 13px;
+        background-color: #6d6d6d;
+        padding: 5px;
+        color: #fff;
+    }
+
+    .dashboardContent {
+        /*background: #eeeeee38;*/
+        border: 1px solid #eee;
+        padding: 5px;
+    }
+
+    .grid-stack-item-content {
+        color: #2c3e50;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #33333330;
+    }
+    .grid-stack-item-content img{
+        width: 64px;
+        height:64px;
+    }
+    .dashboardList{
+        padding: 0px;
+        list-style: none;
+    }
+
+    .dashboardList li{
+        line-height: 25px;
+        padding: 5px;
+        cursor: pointer;
+        padding-left: 10px;
+    }
+
+    .dashboardList li a{
+        text-decoration: none;
+        color:#333;
+    }
+
+    .dashboardList li:hover{
+        background-color: #eeeeeec2;
+    }
+
+    .dashboardList li.active{
+        background-color: #eeeeeec2;
+        font-weight: bold;
+        border: 1px solid #cccccc70;
+        border-left: 2px solid #FF9800;
+        border-right: 3px solid #FF9800;
+    }
+
+    .widgetsBox{
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+        -webkit-box-shadow: 0 0 31px -3px #ddd;
+        box-shadow: 0 0 31px -3px #ddd;
+        cursor: pointer;
+        background-color: #fff;
+    }
+
+    .widgetsBox img{
+        width: 64px;
+        height: 64px;
+    }
+    .widgetsBox label{
+        display: block;
+        margin: 5px 0px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .custom-dropdown-item {
+        padding: 3px 10px;
+        font-weight: 400;
+        color: #373a3c;
+        text-align: inherit;
+        white-space: nowrap;
+        background: none;
+        border: 1px solid #eee;
+        margin: 3px;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 22px;
+    }
+
+
+    #editorModal.modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .modal-dialog-big {
+        position: fixed;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    #editorModal.modal-content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .nav-tabs {
+        background: #4b4a49;
+        border-radius: 0px;
+    }
+
+    .tab-content {
+        border:1px solid #4a494961;
+        padding:3px;
+    }
+
+    .nav-tabs .nav-link {
+        color: #d0d0d0;
+    }
+
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: #FFC107;
+        background-color: #272822;
+        border-color: #dee2e6 #dee2e6 #fff;
+        border-radius: 0px;
+        font-weight: bold;
+    }
+
+    .nav-tabs .nav-link:hover{
+        color: #FFC107;
+        background-color: #272822;
+        border-color: #dee2e6 #dee2e6 #fff;
+        border-radius: 0px;
+    }
+
+    .widgetLiveHeader{
+        background-color: #4a4949;
+        color: #fff;
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .updateTag{
+        margin-bottom: 0px;
+        font-size: 9px;
+        margin-top: 5px;
+        color: #28a745;
+    }
+
+    .colorpicker-visible{
+        z-index: 9999994 !important;
+    }
+
+</style>
+
+<link rel="stylesheet" href="/css/gridstack.css"/>
+<link rel="stylesheet" href="/css/gridstack-extra.css"/>
+
+<div class="container-fluid msgDef platformBody" style="padding: 3px 5px;">
+
+    <!-- begin panel -->
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn hidden-xs">
+                <a href="javascript:;" style="text-decoration: none" class="dashboardStatus"></a>
+                <a href="javascript:;" class="btn btn-xs btn-circle btn-default" data-click="panel-expand"><i class="icon-expand2"></i></a>
+                <a href="javascript:;" class="btn btn-xs btn-circle btn-default" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                <a href="javascript:;" class="btn btn-sm btn-icon btn-circle btn-warning" title="Help"><i class="icon-help"></i></a>
+
+            </div>
+            <h4 class="panel-title">
+                <i class="icon-edit2"></i> Dashboard Editor Studio
+            </h4>
+        </div>
+        <div class="panel-body dashboardBody" style="background-color: #eeeeee00;border: 1px solid #eee;">
+           <div class="row">
+               <div class="col-lg-2" style="padding: 0px;">
+                   <div class="panel panel-inverse col-lg-12" style="padding: 0px">
+                       <div class="panel-heading">
+                           <div class="panel-heading-btn">
+                               <a href="javascript:;" onclick="openDashboardModal(1)" class="btn btn-sm btn-icon btn-circle btn-default"><i class="fa fa-plus"></i></a>
+                               <a href="javascript:void(0)" data-click="panel-reload" onclick="loadDashboardlist()" class="btn btn-sm btn-icon btn-circle btn-default">
+                                   <i class="fa fa-refresh"></i></a>
+                           </div>
+                           <h4 class="panel-title">Dashboard's</h4>
+                       </div>
+                       <div class="panel-body dashboardListBody" style="border: 1px solid #eee;background-color: #eeeeee73;padding:1px;overflow: auto;overflow-x: hidden">
+
+
+                           <ul class="dashboardList"></ul>
+
+
+                       </div>
+                   </div>
+               </div>
+               <div class="col-lg-8">
+                   <div class="row">
+
+                       <div class="col-lg-12">
+                           <h4 class=" pull-left" style="color:#666"><span class="dashboardIcon"></span> <span class="dashboardName"></span>
+
+                               <a href="javascript:void(0)" class="ml-3 btn btn-sm btn-icon btn-circle btn-default" onclick="openDashboardModal(2)"><i class="icon-edit2"></i></a>
+                               <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-circle btn-default" onclick="openDashboardModal(3)"><i class="icon-trash4"></i></a>
+
+                           </h4>
+
+                           <div class="btn-group btn-group-justified pull-right">
+                               <button class="btn btn-default" onclick="previewDashboard()"><i class="icon-eye4" ></i> Preview</button>
+                               <button class="btn btn-default" data-click="panel-reload" onclick="saveDashboard()"><i class="icon-save"></i> Save</button>
+                           </div>
+
+                       </div>
+                   </div>
+                   <div class="dashboardContent" style="overflow: auto;overflow-x: hidden;padding-top:10px;">
+                    <div class="grid-stack" style=""></div>
+                   </div>
+               </div>
+               <div class="col-lg-2" style="padding: 0px;">
+                   <div class="panel panel-inverse col-lg-12" style="padding: 0px">
+                       <div class="panel-heading" >
+                           <div class="panel-heading-btn">
+                               <!--<a href="/marketplace/widgets" title="Add widgets from marketplace" target="_blank" class="btn btn-sm btn-icon btn-circle btn-default">-->
+                                   <!--<i class="icon-download4"></i></a>-->
+                               <a href="javascript:void(0)"  data-click="panel-reload" onclick="loadImportedWidgets()" class="btn btn-sm btn-icon btn-circle btn-default">
+                                   <i class="fa fa-refresh"></i></a>
+                           </div>
+                           <h4 class="panel-title"><i class="icon-th"></i> Imported Widgets</h4>
+                       </div>
+                       <div class="panel-body " style="border: 1px solid #eee;overflow-x: hidden;overflow: auto;background-color: #f7f7f7;">
+                           <div style="text-align: center;margin-bottom: 10px;">
+                               <a  href="/marketplace/addwidget" target="_blank" style="text-decoration: none;display: block" class="text-warning">
+                                   <i class="icon-plus-circle"></i> Add New Widget
+                               </a>
+
+                               <br>
+                               <small>Download/Publish widgets from </small><br>
+                               <a  href="/marketplace/widgets" target="_blank" style="text-decoration: none" class="text-warning">
+                                   <img src="images/menu/market-place.png" style="width: 24px"> Marketplace
+                               </a>
+
+
+                           </div>
+
+                                <form action="javascript:void(0)"  onsubmit="loadImportedWidgets()">
+                                   <div class="input-group mb-3">
+                                       <input type="text" id="searchText" class="form-control" placeholder="Search Widget's" aria-label="Username" aria-describedby="basic-addon1">
+                                       <div class="input-group-prepend">
+                                           <button class="btn btn-secondary" type="submit"><i class="icon-search"></i> </button>
+                                       </div>
+                                   </div>
+                                </form>
+
+                            <label>Total Widgets: <span class="widgetCount"></span></label>
+
+                            <div class="widgetBody" style="overflow: auto;overflow-x: hidden"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+    <!-- end panel -->
+
+</div>
+
+
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/gridstack.js"></script>
+<script src="/js/gridstack.jQueryUI.js"></script>
+<script src="/js/bootstrap-colorpicker.min.js"></script>
+
+
+<script src="/js/editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/src-noconflict/ext-searchbox.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/src-noconflict/snippets/html.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/src-noconflict/snippets/css.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/editor/src-noconflict/snippets/javascript.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/select2.min.js" type="text/javascript"></script>
+
+<script src="/controllers/dashboard-editor.js"></script>
+
+
+<div id="addDashboard" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><span class="dashboardAction"></span> Dashboard</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="javascript:void(0)">
+                <div class="modal-body">
+                    <div  class="row">
+                        <div  class="col-md-8">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Dashboard Name</label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="dashboard_name" required>
+                                <small>Can embed <b>HTML</b> code also</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div  class="col-md-8">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Dashboard Icon</label>
+
+                                <div class="dropdown">
+                                    <div class="btn btn-sm dropdown-toggle" style="width: 100%;border: 1px solid #3e373738;" type="" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <input type="text" style="" class="input-sm inputDevice"
+                                               placeholder="Search by name, tags" id="imageID" onkeyup="loadImageList(this.value)">
+                                    </div>
+                                    <ul class="dropdown-menu imageListUl" aria-labelledby="dropdownMenu2">
+                                        <!--<li class="deviceListLi" onclick="setDeviceId()">
+                                            {{device.name ? device.name : device.id}} | {{device.modelId}} [<b>{{device.version}}</b>]
+                                        </li>-->
+                                    </ul>
+                                </div>
+                                <small>* List only public images</small>
+
+
+                                <!--<div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-defaul btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="iconClass" id="dashboard_icon"></span>
+                                    </button>
+                                    <div class="dropdown-menu open-left arrow iconList" style="height:200px;overflow: scroll;overflow-x: hidden;width:50px;">
+                                        &lt;!&ndash;<a class="custom-dropdown-item" style="" (click)="dashboard.setIconClass(icon)"><i class="{{icon}}"></i></a>&ndash;&gt;
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div  class="col-md-4">
+                            <div  class="form-group imageHtml" style="text-align: center;">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div  class="col-md-4">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Background Color</label> <br>
+                                <!--<input id="dashboard_bg" required></input>-->
+                                <div id="dashboard_bg" class="input-group colorpicker-component">
+                                    <input type="text" value="" class="form-control" />
+                                    <span class="input-group-addon"><i></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div  class="col-md-4">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Title Background Color</label> <br>
+                                <!--<input id="dashboard_bg" required></input>-->
+                                <div id="dashboard_title_bg" class="input-group colorpicker-component">
+                                    <input type="text" value="" class="form-control" />
+                                    <span class="input-group-addon"><i></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div  class="col-md-4">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Title Text Color</label> <br>
+                                <!--<input id="dashboard_bg" required></input>-->
+                                <div id="dashboard_title_text_bg" class="input-group colorpicker-component">
+                                    <input type="text" value="" class="form-control" />
+                                    <span class="input-group-addon"><i></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btnModal btnSubmit">Proceed</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Dashboard</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Are you sure want to delete <b><span class="dashboardDeleteName"></span> dashboard</b>?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btnModal" onclick="deleteDashboard()">Proceed</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="deleteWidgetModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Widget</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Are you sure want to delete the <b><span class="widgetImportName"></span></b> widget from the domain?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btnModal" onclick="deleteImportedWidget()">Proceed</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div id="editorModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-big" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><button type="button" class="btn btn-xs btn-default"
+                                                style="margin-right:10px;" data-dismiss="modal"><i class="icon-chevron-left2"></i> Back</button>
+                    Widget Settings</h4>
+
+                <button type="button" class="btn btn-sm btn-success" onclick="saveCode()"><i class="icon-save"></i> Save Widget</button>
+            </div>
+            <div class="modal-body" style="overflow: auto;overflow-x: hidden;background-color: #3e3b3c3d">
+
+                <div class="row mt-2">
+                    <div class="col-lg-6" style="position: relative">
+                        <button class="btn btn-sm btn-warning" onclick="codeLivePreview()" style="position: absolute;top: 5px;right: 15px;"><i class="icon-play"></i> Run</button>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-items">
+                                <a href="#default-tab-0" data-toggle="tab" class="nav-link active show">
+                                    <span class="d-sm-none">Widget</span>
+                                    <span class="d-sm-block d-none">Widget</span>
+                                </a>
+                            </li>
+                            <li class="nav-items">
+                                <a href="#default-tab-1" data-toggle="tab" class="nav-link">
+                                    <span class="d-sm-none">HTML</span>
+                                    <span class="d-sm-block d-none">HTML</span>
+                                </a>
+                            </li>
+                            <li class="nav-items">
+                                <a href="#default-tab-2" data-toggle="tab" class="nav-link">
+                                    <span class="d-sm-none">JS</span>
+                                    <span class="d-sm-block d-none">Javascript</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#default-tab-3" data-toggle="tab" class="nav-link">
+                                    <span class="d-sm-none">CSS</span>
+                                    <span class="d-sm-block d-none">CSS</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#default-tab-4" data-toggle="tab" class="nav-link">
+                                    <span class="d-sm-none">Resources</span>
+                                    <span class="d-sm-block d-none">Resources</span>
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="#default-tab-5" data-toggle="tab" class="nav-link">
+                                    <span class="d-sm-none">Amazon Alexa</span>
+                                    <span class="d-sm-block d-none">Amazon Alexa</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+
+                            <div class="tab-pane fade active show" id="default-tab-0" style="padding: 10px;">
+
+                                <div class="resourceTab">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label>Widget Title</label>
+                                            <input type="text" class="form-control input-sm" id="widgetTitle">
+                                            <small>Can embed <b>HTML</b> code also</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Title Background Color</label>
+                                            <div id="widget_bg" class="input-group colorpicker-component">
+                                                <input type="text" value="" class="form-control" />
+                                                <span class="input-group-addon"><i></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Title Text Color</label>
+                                            <div id="widget_text" class="input-group colorpicker-component">
+                                                <input type="text" value="" class="form-control" />
+                                                <span class="input-group-addon"><i></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7"></div>
+                                    <div class="col-md-7 assetBox idBox">
+                                        <div class="form-group">
+                                            <label>Choose Asset</label>
+                                            <select class="form-control input-sm" id="assetList" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 messageBox idBox">
+                                        <div class="form-group">
+                                        <label class="inputLabel">Choose Message</label>
+                                        <select class="form-control input-sm" id="messageList" required onchange="loadMsgFields()"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-2 messageBox idBox">
+                                        <code class="messageFields">
+
+                                        </code>
+                                    </div>
+
+                                    <div class="col-md-7 deviceBox idBox">
+                                        <div  class="form-group">
+                                            <label  class="inputLabel">Choose Device</label>
+                                            <div class="dropdown">
+                                                <div class="btn btn-sm dropdown-toggle" style="width: 100%;border: 1px solid #3e373738;" type="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <input type="text" style="" class="input-sm inputDevice"
+                                                           placeholder="Search by device id, name, model, version" id="deviceID" onkeyup="loadDeviceList(this.value)">
+                                                </div>
+                                                <ul class="dropdown-menu deviceListUl" aria-labelledby="dropdownMenu1">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7 recordBox idBox">
+                                        <div class="form-group">
+                                            <label>Choose Record</label>
+                                            <select class="form-control input-sm" id="recordList" required onchange="loadRecFields()"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-2 recordBox idBox">
+                                        <code class="recordFields">
+
+                                        </code>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- begin tab-pane -->
+                            <div class="tab-pane fade" id="default-tab-1">
+                                <div id="htmlEditor"></div>
+                            </div>
+                            <!-- end tab-pane -->
+                            <!-- begin tab-pane -->
+                            <div class="tab-pane fade" id="default-tab-2">
+                                <div id="jsEditor"></div>
+                            </div>
+                            <!-- end tab-pane -->
+                            <!-- begin tab-pane -->
+                            <div class="tab-pane fade" id="default-tab-3">
+                                <div id="cssEditor"></div>
+                            </div>
+                            <!-- end tab-pane -->
+                            <!-- begin tab-pane -->
+                            <div class="tab-pane fade" id="default-tab-4">
+                                <div class="col-lg-12">
+                                    <div class="row resourceTab" style="overflow: auto;overflow-x: hidden">
+                                        <div class="col-lg-4 inbuildContent" style="background-color: #eee;display: none">
+                                            <div class="form-group" style="">
+                                                <label class="inputLabel">In-Build CSS:</label><br>
+                                                <small class="defaultCss" style="white-space: pre-wrap"></small>
+                                                <br><br>
+                                                <label class="inputLabel">In-Build Javascript:</label><br>
+                                                <small class="defaultJs" style="white-space: pre-wrap"></small>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-8">
+                                            <div class="form-group hide">
+                                                <label class="inputLabel">Do you need to include in-build CSS?</label> <br>
+                                                <label style="font-weight: normal"><input type="radio" placeholder=""  name="inbuildcss" value="true" checked/> Yes</label>
+                                                <label style="font-weight: normal"><input type="radio" placeholder=""  name="inbuildcss" value="false"/> No</label>
+
+                                            </div>
+                                            <div class="form-group hide">
+                                                <label class="inputLabel">Do you need to include in-build Javascript?</label> <br>
+                                                <label style="font-weight: normal"><input type="radio" placeholder="" name="inbuildjs" value="true" checked/> Yes</label>
+                                                <label style="font-weight: normal"><input type="radio" placeholder="" name="inbuildjs" value="false"/> No</label>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="inputLabel" style="display: block">Add External Javascript</label>
+                                                <textarea class="form-control input-sm" placeholder="" type="text" id="jsResource" style="height: 200px;"></textarea>
+                                                <small class="grey">Enter the URL line by line <br>
+                                                    Ex: <br>
+                                                    https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js<br>
+                                                    https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js
+                                                </small>
+
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <label class="inputLabel"  style="display: block">Add External Stylesheet</label>
+                                                <textarea class="form-control input-sm" placeholder="" type="text" id="cssResource" style="height: 200px;"></textarea>
+                                                <small class="grey">Enter the URL line by line <br>
+                                                    Ex: <br>
+                                                    https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css<br>
+                                                    https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css
+                                                </small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab-pane -->
+                            <!-- begin tab-pane -->
+                            <div class="tab-pane fade hide" id="default-tab-5">
+                                <div class="resourceTab">
+                                    <div class="col-md-12 mb-1 messageBox idBox">
+                                       <label>Message Definition Fields</label><br>
+                                        <code class="messageFields"></code>
+                                    </div>
+                                    <div class="col-md-12 mt-2 mb-1 recordBox idBox">
+                                        <label>Record Definition Fields</label><br>
+                                        <code class="recordFields">
+
+                                        </code>
+                                    </div>
+
+                                    <div class="col-md-12 mt-2 mb-1 messageBox idBox">
+                                        <div class="form-group" style="background-color: #eeeeee40;padding: 10px;border: 1px solid #eee;">
+                                            <label>Enable Alexa</label>
+
+                                            <p>
+                                                <label><input type="radio" name="enableAlexa" value="true"> True</label>
+                                                <label><input type="radio" name="enableAlexa" value="false" checked> False</label>
+                                            </p>
+
+                                            <label>To Invoke this intent in alexa, </label>
+
+                                            <p>
+                                                Say, <input type="text" style="border: 1px dashed #ccc;width: 75%;color: #333;font-size: 14px;" id="intentName" /> Widget!
+                                            </p>
+
+                                            <label>Build your response in alexa, </label>
+
+                                            <p>
+                                                <input type="text" style="border:1px dashed #ccc;width: 100%;color: #333;font-size: 14px;" id="responseName" /> <br>
+                                                <small>Ex:
+                                                    <br>To bind message definition field, Current Temperature is {{msg_< FIELDNAME >}} degree celcius
+                                                    <br>To bind record definition field, Current Temperature is {{rec_< FIELDNAME >}} degree celcius
+                                                    <br> During runtime fieldname value rendered.
+                                                </small>
+                                            </p>
+
+                                            <button class="btn btn-info btn-sm" onclick="errorMsg('Not Implemented')"><i class="icon-save"></i> Save Alexa Settings</button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- end tab-pane -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="padding: 0px;">
+
+
+                        <div class="panel panel-inverse">
+                            <div class="panel-heading widgetLiveHeader">
+                                <div class="panel-heading-btn">
+                                    <a href="javascript:;" class="btn btn-sm btn-icon btn-circle btn-success" data-click="panel-reload" onclick="codeLivePreview()"><i class="fa fa-redo"></i></a>
+                                </div>
+                                <h4 class="panel-title widgetLiveTitle">Untitled Widget</h4>
+
+                            </div>
+                            <div class="panel-body widgetLiveBody" style="border: 1px solid #eee;padding:0px">
+                                <div style="border: 1px solid #ccc;" id="livePanel">
+                                    <iframe id="previewCode" style="width: 100%;border:0px;"></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<div id="shareModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Share Widget</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5><label><input type="radio" id="enableBtn" name="shareBtn" onclick="shareWidget()" value="enable"/> Enable</label></h5>
+                <h5><label><input type="radio" id="disableBtn" name="shareBtn" onclick="shareWidget()" value="disbale"/> Disable</label></h5>
+
+                <h5 class="mt-2 shareLink" style="width:100%;word-wrap:break-word"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+  <!--  <div class="theme-panel">
+        <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+        <div class="theme-panel-content m-t-2">
+            <h5 class="m-t-0">Platform Theme</h5>
+            <ul class="theme-list clearfix">
+                <li class="active"><a href="javascript:;" class="bg-green"  data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-red"  data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-blue" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-purple"  data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-orange"  data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-black" data-theme="black" data-theme-file="../assets/css/default/theme/black.css" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
+            </ul>
+            <div class="divider"></div>
+            <div class="row m-t-10">
+                <div class="col-md-12">
+                    <a href="javascript:;" class="btn btn-inverse btn-block btn-sm" >Reset Local Storage</a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <footer class="footer">
+    <div class="container-fluid">
+        <p class="text-muted mt-1" style="color: #666 !important;">
+            &copy; <span class="currentYear"></span>. All rights reserved.
+
+            <span class="text-center footerInfo" style="font-size: 11px;color:#ccc">
+                Dashboard Version: <b><span class="webVersion"></span></b>
+                <span style="color:#ccc">|</span>
+                Platform Version: <b><span class="apiVersion"></span></b>
+            </span>
+
+            <img src="" class="powered-by pull-right poweredBy" style="height: 30px;"/>
+
+        </p>
+    </div>
+</footer>
+
+
+
+<div id="privacyModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">We're updated the Privacy & Policy</h4>
+            </div>
+            <div class="modal-body">
+                <p>A change in our <a href="https://boodskap.io/privacy-policy" target="_blank">Privacy Policy</a> takes effect from
+                May 24, 2018. Please read them carefully and proceed. Thanks for using Boodskap IoT Platform!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btnModal" onclick="proceedPrivacy()">Accept & Continue</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div id="domainNameModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="icon-globe"></i> Domain Information</h4>
+            </div>
+            <form action="javascript:void(0)" onsubmit="saveDomainName()">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Domain Name</label> <br>
+                            <input type="text" id="domainName" class="form-control input-sm" required/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btnModal">Save & Continue</button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+</div>
+
+
+<div id="snackbar"></div>
+
+
+<script>
+    $(document).ready(function() {
+        App.init();
+    });
+</script>
+</body>
+</html>
+

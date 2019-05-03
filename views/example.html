@@ -1,0 +1,541 @@
+<!-- <a href="http://lesson8.blogspot.com/">http://lesson8.blogspot.com/</a> -->
+
+<form id="form1" runat="server">
+    <input type='file' id="inputFile" />
+    <img id="image_upload_preview" src="http://placehold.it/100x100" alt="your image" />
+</form>
+
+<br>
+
+<a href="https://news.google.com/news/tbn/fTC3t-1DoJUJ/6.jpg" class="sideLoad myclass">Link to image 1</a>
+<a href="http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0L2I1L3doZXJlZG9nb29nLmJoTi5qcGcKcAl0aHVtYgk5NTB4NTM0IwplCWpwZw/4931e287/304/where-do-google-doodles-come-from--ff2932470c.jpg" class="sideLoad">Link to image 2</a>
+<div id="imageBox"></div>
+
+<br>
+
+
+<input type='file' multiple/>
+<div class="img-container" >
+
+</div>
+
+
+
+<br>
+
+<form action="https://upload.embed.ly/1/video?key=YOUR_API_KEY" method="POST" enctype="multipart/form-data">
+    <input id="video_file" name="video_file" type="file">
+    <input type="submit" class="button" value="Upload">
+</form>
+<div class="video-display"></div>
+
+
+
+<script>
+
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inputFile").change(function () {
+        readURL(this);
+    });
+
+
+
+    $(function(){
+    $("a.myclass").click(function(e) {
+        e.preventDefault();
+        $("#imageBox").html('<img src="' + this.href + '" />');
+    });
+})
+
+
+
+
+$(function () {
+    $(":file").change(function () {
+        /*if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }*/
+            var noOfFiles = this.files.length;
+        for(var i=0; i < noOfFiles; i++){        
+        	  var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[i]);
+        }        
+    });
+});
+
+function imageIsLoaded(e) {
+var imgTmpl = '<img src='+e.target.result+'>';
+    $('.img-container').append(imgTmpl);
+    
+    
+};
+
+
+
+
+
+
+
+//*********************************//
+
+
+$( document ).ready(function() {
+  $("form").submit(function(e) {
+      e.preventDefault();
+      var fd = new FormData($("form")[0]);
+      $.ajax({
+        url: $(this).attr('action'),
+        data: fd,
+        processData: false,
+        contentType: false,
+        crossDomain: true,
+        headers: {'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'},
+        type: 'POST',
+        success: function(data, textStatus, xhr){
+          $(".video-display").html('<p>' + data.html + '</p>');
+          console.log('success:' + data.url);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          // do something with error
+          console.log("Upload Failed for video: "  + errorThrown);
+        },
+        xhr: function()
+        {
+          var xhr = new window.XMLHttpRequest();
+          xhr.upload.addEventListener("progress", function(evt){
+            if (evt.lengthComputable) {
+              var percentComplete = (evt.loaded / evt.total) * 100.0;
+              console.log('upload completion: ' + percentComplete.toFixed(2) + '%');
+            }
+          }, false);
+          return xhr;
+        }
+    });
+  });
+
+});
+
+</script>
+
+
+
+
+
+  <!-- ***************************** -->
+
+
+
+
+  <!-- Make an div for show icon-->
+<div id="view-fa"></div>
+
+<!-- own select -->
+
+<!-- Simple jq script for show selected item -->
+<script>
+  $(document).ready(function(){
+        /* Detect any change of option*/
+  	$("#icons-fa").change(function(){
+  		var icono = $(this).val();
+  		$("#view-fa").html('<i class="fa '+icono+'"></i>');
+  	});
+        
+         /* simulate an change on select */
+  	$("#icons-fa").change();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- *************************************************************************** -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <h5>Getting Started</h5><hr>
+
+            <ul style="line-height: 2rem">
+                <li>Login to <a href="https://platform.boodskap.io" target="_blank">Boodskap IoT Platform</a></li>
+                <li><a href="https://platform.boodskap.io/user-management" target="_blank">https://platform.boodskap.io/user-management</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div> -->
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/base/jquery.fonticonpicker.min.css">
+<link rel="stylesheet" type="text/css" href="/themes/grey-theme/jquery.fonticonpicker.grey.min.css" />
+ 
+<!-- optional themes -->
+<link rel="stylesheet" type="text/css" href="/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" />
+<link rel="stylesheet" type="text/css" href="/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css" />
+
+<link rel="stylesheet" type="text/css" href="/fontello-7275ca86/css/fontello.css" />
+<link rel="stylesheet" type="text/css" href="/icomoon/icomoon.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.fonticonpicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.fonticonpicker.css" />
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css" />
+<!-- default grey-theme -->
+
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css">
+
+<!-- optional themes | no need to include default theme -->
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css">
+
+<style>
+.panel-title {
+    font-size: 16px;
+    line-height: 30px;
+    margin-left: 10px;
+  
+    color: rgb(238, 238, 238) ;
+    font-family:'Times New Roman', Times, serif
+}
+
+</style>
+
+
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-xl-2" style="padding: 0px;">
+                    <div class="panel panel-inverse col-lg-12" style="padding: 10px">
+                        <!-- <div class="panel-heading" style="background-color: rgb(192, 51, 162);"> -->
+                            <!-- <h4 class="panel-title"> Dashboard's 
+                                <div class="btn-group" style="float: right">
+                                        <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-circle btn-default" id="round" onclick="openModal()"><i class="fa fa-plus"></i> <span class="hidden-xs"></span></a>
+                                        <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-circle btn-default" data-click="panel-reload" onclick="DashboardList()"><i class="fa fa-undo"></i> 
+                                        </a>
+                                        
+                                </div> 
+                             </h4> -->
+                             <div class="panel-body dashboardListBody" style="border: 1px solid rgb(238, 238, 238); background-color: rgba(238, 238, 238, 0.45); padding: 1px; overflow: hidden auto; height: 800px;">
+                             <div style="background-color: rgb(192, 51, 162);color:#fff;padding:5px; font-family:'Times New Roman', Times, serif"><span style="font-size:1.4em;margin-left:10px">Dashboard </span>  <i style="float:right;font-size:1.4em;margin-top:2px;" onclick="openModal(1)" class="fa fa-plus-square"></i> </div>
+                             <div id="view-fa"></div>
+                             <div class="panel-body dashboardListBody" style="border: 1px solid #eee;background-color: #eeeeee73;padding:1px;overflow: auto;overflow-x: hidden">
+
+
+                                <ul class="dashboardList"></ul>
+     
+     
+                            </div>
+                        </div>
+                        <!-- <div class="panel-body dashboardListBody" style="border: 1px solid rgb(238, 238, 238); background-color: rgba(238, 238, 238, 0.45); padding: 1px; overflow: hidden auto; height: 800px;"> -->
+ 
+                      <!-- </div> -->
+                    </div>
+                </div>
+           
+          
+         <!-- <div class="col-xl-10" style="padding: 0px;">
+                    <div class="panel panel-inverse col-lg-12" style="padding: 10px">
+                            <div class="panel-heading" >
+                                <h4 class="panel-title" style="color: rgb(31, 33, 36);"> 
+                                   
+                                 </h4>
+                            </div>
+                            <div class="panel-body dashboardListBody"  style="border: 1px solid rgb(238, 238, 238); background-color: rgba(238, 238, 238, 0.45); padding: 1px; overflow: hidden auto; height: 800px;">
+                                 <div class="imageOutput"  style="height:350px;width:350px">
+                                    
+                             
+                          </div> 
+                        
+                        </div>
+            </div>
+          </div> -->
+
+
+          <div class="col-lg-8">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <h4 class=" pull-left" style="color:#666"><span class="dashboardIcon"></span> <span class="dashboardName"></span>
+
+                        <a href="javascript:void(0)" class="ml-3 btn btn-sm btn-icon btn-circle btn-default" onclick="editDashboard()"><i class="fas fa-edit"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-circle btn-default" onclick="delDashboard()"><i class="fas fa-trash"></i></a>
+
+                    </h4>
+
+                    <div class="btn-group btn-group-justified pull-right">
+                        <button class="btn btn-default" onclick="previewDashboard()"><i class="fas fa-eye" ></i> Preview</button>
+                        <button class="btn btn-default" data-click="panel-reload" onclick="saveDashboard()"><i class="fas fa-save"></i> Save</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="dashboardContent" style="overflow: auto;overflow-x: hidden;padding-top:10px;">
+             <!-- <div class="grid-stack" style=""></div> -->
+            </div>
+        </div>
+</div>
+
+
+<div id="adDashboard" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:lightslategray; font-family:Times New Roman, Times, serif ; font-weight:bold">
+                <h4 class="modal-title"><span class="tempAction"></span> Dashboard</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="javascript:void(0)" autocomplete="off">
+                <div class="modal-body">
+                    <div  class="row">
+                        <div  class="col-md-12">
+                            <div  class="form-group" style=" font-family:Times New Roman, Times, serif">
+                                <label  class="inputLabel" >Dashboard Name <span style="color:blue">*</span></label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="dashboardName" required>
+                            </div>
+                        </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group" style=" font-family:Times New Roman, Times, serif">
+                                <label class="inputLabel">Choose Icon</label>
+
+                                 
+                               
+                                 <div class="dropdown" id="imageicon">
+                                    <select name="e2_element" id="e2_element">
+                                        <option value="">No icon</option>
+                                        
+                                        <option>icon-user</option>
+                                        <option>icon-search</option>
+                                        <option>icon-right-dir</option>
+                                        <option>icon-star</option>
+                                        <option>icon-cancel</option>
+                                        <option>icon-help-circled</option>
+                                        <option>icon-info-circled</option>
+                                        <option>icon-eye</option>
+                                        <option>icon-tag</option>
+                                        <option>icon-bookmark</option>
+                                        <option>icon-heart</option>
+                                        <option>icon-thumbs-down-alt</option>
+                                        <option>icon-upload-cloud</option>
+                                        <option>icon-phone-squared</option>
+                                        <option>icon-cog</option>
+                                        <option>icon-wrench</option>
+                                        <option>icon-volume-down</option>
+                                        <option>icon-down-dir</option>
+                                        <option>icon-up-dir</option>
+                                        <option>icon-left-dir</option>
+                                        <option>icon-thumbs-up-alt</option>
+                                        <option >icon-help-circled</option>
+                                        <option >icon-info-circled</option>
+                                        <option >icon-info</option>
+                                        <option>icon-mail</option>
+                                        <option>icon-mail-alt</option>
+                                        <option>icon-th-large</option>
+                                        <option>icon-th</option>
+                                        <option>icon-th-list</option>
+                                        <option>icon-home</option>
+                                        <option>icon-reply</option>
+                                        <option>icon-link</option>
+                                        <option>icon-unlink</option>
+                                        <option>icon-link-ext</option>
+                                        <option>icon-link-ext-alt</option>
+                                        <option>icon-attach</option>
+                                        <option>icon-tags</option>
+                                        <option>icon-bookmark</option>
+                                        <option>icon-bookmark-empty</option>
+                                        <option>icon-trash</option>
+                                        <option>icon-edit</option>
+                                        <option>icon-download</option>
+                                        <option>icon-upload</option>
+                                        <option>icon-download-cloud</option>
+                                        <option>icon-reply-all</option>
+                                        <option>icon-upload-cloud</option>
+                                        <option>icon-music</option>
+                                        <option>icon-lock</option>
+                                        <option>icon-lock-open</option>
+                                        <option>icon-lock-open-alt</option>
+                                        <option>icon-pin</option>
+                                        <option>icon-book</option>
+                                        <option>icon-eye</option>
+                                        <option>icon-eye-off</option>
+                                        <option>icon-flag</option>
+                                        <option>icon-flag-empty</option>
+                                        <option>icon-flag-checkered</option>
+                                        <option>icon-thumbs-up</option>
+                                        <option>icon-thumbs-down</option>
+                                        <option>icon-bell</option>
+                                        <option>icon-bell-alt</option>
+                                        <option>icon-thumbs-up-alt</option>
+                                        <option>icon-thumbs-down-alt</option>
+                                        <option>icon-video</option>
+                                        <option>icon-videocam</option>
+                                        <option>icon-picture</option>
+                                        <option>icon-camera</option>
+                                        <option>icon-camera-alt</option>
+                                        <option>icon-export</option>
+                                        <option>icon-heart-empty</option>
+                                        <option>icon-pencil</option>
+                                        <option>icon-pencil-squared</option>
+                                        <option>icon-print</option>
+                                        <option>icon-user</option>
+                                        <option>icon-users</option>
+                                        <option>icon-male</option>
+                                        <option>icon-female</option>
+                                        <option>icon-forward</option>
+                                        <option>icon-star-empty</option>
+                                        <option>icon-star-half</option>
+                                        <option>icon-star-half-alt</option>
+                                        <option>icon-retweet</option>
+                                        <option>icon-keyboard</option>
+                                        <option>icon-gamepad</option>
+                                        <option>icon-comment</option>
+                                        <option>icon-chat</option>
+                                        <option>icon-ok</option>
+                                        <option>icon-ok-circled</option>
+                                        <option>icon-ok-circled2</option>
+                                        <option>icon-ok-squared</option>
+                                        <option>icon-cancel</option>
+                                        <option>icon-cancel-circled</option>
+                                        <option>icon-cancel-circled2</option>
+                                        <option>icon-plus</option>
+                                        <option>icon-plus-circled</option>
+                                        <option>icon-plus-squared</option>
+                                        <option>icon-plus-squared-small</option>
+                                        <option>icon-minus</option>
+                                        <option>icon-minus-circled</option>
+                                        <option>icon-minus-squared</option>
+                                        <option>icon-minus-squared-alt</option>
+                                        <option>icon-minus-squared-small</option>
+                                        <option>icon-quote-right</option>
+                                        <option>icon-quote-right</option>
+                                        <option>icon-code</option>
+                                        <option>icon-comment-empty</option>
+                                        <option>icon-chat-empty</option>
+                                        
+                
+                                      
+                                      
+                                             </select>
+                                                          
+                                        
+
+                                </div>
+                                <small>* List only public images</small>
+
+
+                             
+                            </div>
+                        </div>
+                        
+                    </div>  
+                 
+                   
+                </div>
+                <div class="modal-footer" style=" font-family:Times New Roman, Times, serif">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                    <button type="submit" onclick='addDashboard()' class="btn btnModal btn-success btnSubmit btn-hr">Save</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="EditDashboard" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><span class="tempAction"></span> Dashboard</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="javascript:void(0)" autocomplete="off">
+                <div class="modal-body">
+                    <div  class="row">
+                        <div  class="col-md-12">
+                            <div  class="form-group">
+                                <label  class="inputLabel">Dashboard Name </label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="dashboardName1" required>
+                            </div>
+                        </div>
+                        
+                     </div>
+
+                     
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id='EnterDashboard' class="btn btnModal btn-success btnSubmit btn-hr">Proceed</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+   
+
+
+    
+
+
+
+
+
+
+
+<!-- scripts -->
+
+
+ <!-- <script type="text/javascript" src="/libraries/jquery.fonticonpicker.min.js"></script>  --> 
+
+<script type="text/javascript" src="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js"></script>
+
+
+ <script src="/js/dashboard.js"></script>
+  

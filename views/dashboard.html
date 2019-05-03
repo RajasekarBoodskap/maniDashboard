@@ -1,0 +1,335 @@
+
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/base/jquery.fonticonpicker.min.css">
+<link rel="stylesheet" type="text/css" href="/themes/grey-theme/jquery.fonticonpicker.grey.min.css" /> 
+ <!-- optional themes -->
+ <link rel="stylesheet" type="text/css" href="/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" /> 
+<link rel="stylesheet" type="text/css" href="/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css" />
+<link rel="stylesheet" type="text/css" href="/fontello-7275ca86/css/fontello.css" /> 
+<link rel="stylesheet" type="text/css" href="/css/jquery.fonticonpicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.fonticonpicker.css" /> 
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+ <link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css" />
+ <!-- <link rel="stylesheet" type="text/css" href="/css/style.min.css" /> -->
+ <!-- <link rel="stylesheet" type="text/css" href="/css/default.css" /> -->
+ 
+<!-- default grey-theme -->
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css">
+<!-- optional themes | no need to include default theme -->
+ <link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css"> 
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<style>
+    .panelHeader{
+        padding: 10px 15px;
+        border: none;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        background-color: #6d6d6d;
+        color:#fff
+    }
+    /* body {
+    font-family: 'Open Sans' !important;
+} */
+    .dashboardContent {
+        /*background: #eeeeee38;*/
+        border: 1px solid #eee;
+        padding: 5px;
+    }
+    
+
+    .panel{
+        margin-bottom: 0px;
+    }
+    .panel-body{
+        border: 1px solid #eee;
+        box-sizing: border-box;
+
+    }
+    .dashboardBody{
+        overflow: auto;
+        overflow-x: hidden;
+    }
+.panel-title {
+    font-size: 16px;
+    line-height: 30px;
+    margin-left: 10px;
+  
+    color: rgb(238, 238, 238) ;
+    font-family:'Times New Roman', Times, serif
+}
+.btn-circle, .btn.btn-circle {
+    border-radius: 100px;
+}
+
+.btn-icon, .btn.btn-icon {
+    display: inline-block;
+   
+    padding: 0;
+    border: none;
+    
+}
+.btn {
+    font-weight: 600;
+    transition: all .1s ease-in-out;
+    box-shadow: none!important;
+}
+.ml-3, .mx-3 {
+    margin-left: 1rem!important;
+}
+.dashboardList li:hover{
+        background-color: #eeeeeec2;
+    }
+.dashboardList {
+    padding: 0px;
+    list-style: none;
+}
+ ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.dashboardList li a {
+    text-decoration: none;
+    color: #333;
+}
+.dashboardList li.active {
+    background-color:#eeeeeec2;
+    font-weight: bold;
+    border: 1px solid #cccccc70;
+    border-left: 2px solid #FF9800;
+    border-right: 3px solid #FF9800;
+}
+
+.dashboardList li {
+    line-height: 25px;
+    padding: 5px;
+    cursor: pointer;
+    padding-left: 10px;
+  
+}
+.circle-icon {
+    background:aliceblue;
+    padding:5px;
+    border-radius: 50%;
+}
+</style>
+<!-- ************************ -->
+
+
+       
+
+    
+
+<!-- ************************* -->
+
+ <div class="container-fluid"  > 
+    <div class="row">
+            <div class="col-lg-2" style="padding: 0px;">
+                    <div class="panel panel-inverse col-lg-12" style="padding: 0px">
+                      
+                           
+                             <div class="panel-body dashboardListBody" style="border: 1px solid rgb(238, 238, 238); background-color: rgba(238, 238, 238, 0.45); padding: 1px;  ">
+                             <div style="background-color:gray;color:#fff;padding:5px; font-family:'inherit'"><span style="font-size:1.2em;margin-left:10px">Dashboard's </span> <i style="float:right;font-size:1.4em;margin-top:2px;" onclick="openDashboardModal(1)" class="fa fa-plus-square"></i> </div>
+                             <div id="view-fa"></div>
+                             <div class="panel-body dashboardListBody" style="border: 1px solid #eee;background-color: #eeeeee73; font-family:Times New Roman, Times, serif; padding:1px;">
+
+
+                                <ul class="dashboardList"></ul>
+     
+                           
+                             </div>
+                          </div>
+                       
+ 
+                      
+                    </div>
+                </div>
+           
+     <div class="col-lg-10" >
+
+
+
+
+        
+            
+        <div class="row">
+
+            <div class="panel panel-inverse col-lg-12 " style="padding-left: 20px;  font-family:Times New Roman, Times, serif; ">
+                   
+                   
+                        <h4 class=" pull-left" style="color:#666"><span class="dashboardIcon"><i class="fa fa-dashboard"></i> </span> <span class="dashboardName">Untiled Dashboard</span>
+                        <a href="javascript:void(0)" class="ml-3 btn btn-sm btn-icon btn-circle btn-default" onclick="openDashboardModal(2)"><i class="fas fa-edit  circle-icon"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-circle btn-default" onclick="delDashboard()"><i class="fas fa-trash circle-icon"></i></a>
+                         
+                    </h4>
+
+                    <div class="btn-group btn-group-justified pull-right" style=" font-family:Times New Roman, Times, serif;">
+                        <button class="btn " onclick="previewDashboard()"><i class="fas fa-eye" ></i> Preview</button>
+                        <button class="btn " data-click="panel-reload" onclick="saveDashboard()"><i class="fas fa-save"></i> Save</button>
+                    </div>
+                </div>
+              
+            </div>
+            <!-- <div class="row" style="padding-top:5px;"> -->
+             <div class="dashboardContent panel panel-inverse col-lg-12" style="padding-top:10px" >
+              
+             <!-- </div>  -->
+            </div>
+         
+        </div>
+   </div>
+</div> 
+
+<div id="adDashboard" class="modal fade"  role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:rgb(62, 59, 59); color:#eee; font-family:Times New Roman, Times, serif ; font-weight:bold">
+                <h4 class="modal-title"><span class="dashboardAction"></span> Dashboard</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="javascript:void(0)" autocomplete="off">
+                <div class="modal-body">
+                    <div  class="row">
+                        <div  class="col-md-12">
+                            <div  class="form-group" style=" font-family:Times New Roman, Times, serif">
+                                <label  class="inputLabel" >Dashboard Name <span style="color:red">*</span></label>
+                                <input  class="form-control input-sm" placeholder="" type="text" id="dashboardName" required>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group" style=" font-family:Times New Roman, Times, serif">
+                                <label class="inputLabel">Choose Icon</label>
+
+                                 
+                                   
+                                 <div>
+                                 <input type="text" id="e8_element" name="e8_element" />
+                                 <span id="e8_buttons">
+                                  <button autocomplete="on" type="button" class="btn btn-primary">Load from Fontello config.json</button>
+                                 </span>
+                                
+                                                 
+                                </div>
+                                            
+                                 
+                                 <small>* List only public images</small>
+                            </div>
+                        </div>
+                    </div>  
+                    
+                   
+                </div>
+                <div class="modal-footer" style=" font-family:Times New Roman, Times, serif">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btnModal btn-success btnSubmit btn-hr">Save</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+   
+<!-- <div id="addCamera" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><span class="templateAction"></span> Camera</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <form action="javascript:void(0)">
+          <div class="modal-body">
+            <div  class="row">
+              <div  class="col-md-6">
+                <div  class="form-group">
+                  <label  class="inputLabel">Camera Name</label>
+                  <input  class="form-control input-sm" placeholder="" type="text" id="camera_name" required>   
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label  class="inputLabel">Description</label>
+                  <input  class="form-control input-sm" placeholder="" type="text" id="camera_info" required>
+                    
+                </div>
+              </div>
+            </div>
+              
+          </div>
+          <div class="modal-footer">
+            <button type="submit" onclick='addAsset()' class="btn btnModal btnSubmit btn-info">Add Camera</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+    
+
+
+  <!-- <div id="linkDevice" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><span class="templateAction"></span> Device</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <form action="javascript:void(0)">
+          <div class="modal-body">
+            <div  class="row">
+              <div  class="col-md-6">
+                <div  class="form-group">
+                 
+                  <select class="form-control" name="camera" id="camList"></select>
+                </div>
+              </div>
+              <div  class="col-md-6">
+                <div  class="form-group">
+  
+                 <button type="submit" onclick="linkDevice($('#camList').val())" class="btn btnModal btnSubmit btn-info">Link Device</button>
+                </div>
+              </div>
+            </div>
+              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+
+<script type="text/javascript" src="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js"></script>
+
+
+ <script src="/js/dashboard.js"></script>
+
+
+
+  
+
+
+
+
+
+
+ <!-- ********************************************* -->
+
+ 
